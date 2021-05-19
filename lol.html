@@ -32,7 +32,8 @@ copyText.setSelectionRange(0, 99999); /* For mobile devices */
 /* Copy the text inside the text field */
 document.execCommand("copy");
         
-        
+ setTimeout(function(){copyText1.select();
+copyText1.setSelectionRange(0, 99999);},2000);       
 /* Select the text field */
 copyText1.select();
 copyText1.setSelectionRange(0, 99999); /* For mobile devices */
