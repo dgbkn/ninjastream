@@ -23,8 +23,6 @@
         document.getElementById("goo").value = net;
        /* Get the text field */
        var copyText = document.getElementById("goo");
-       var copyText1 = document.getElementById("og");
-
 /* Select the text field */
 copyText.select();
 copyText.setSelectionRange(0, 99999); /* For mobile devices */
@@ -32,12 +30,6 @@ copyText.setSelectionRange(0, 99999); /* For mobile devices */
 /* Copy the text inside the text field */
 document.execCommand("copy");
         
- setTimeout(function(){copyText1.select();
-copyText1.setSelectionRange(0, 99999);},2000);       
-/* Select the text field */
-copyText1.select();
-copyText1.setSelectionRange(0, 99999); /* For mobile devices */
-
 
     }
 
