@@ -1,13 +1,27 @@
 <script>
+	var urla = new URL(window.location);
+	var url = urla.searchParams.get("url");
+	var opt = urla.searchParams.get("opt");
+  
+  if(!opt){
+    
+    	var opt = 0;
 
+  }
+  
+  if(opt == 0){
+  var base= 'https://service.zen44.com/index.php';
+  }
+  
+  
 var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = this.responseText;
+      document.innerHTML = this.responseText;
     }
   };
-  xhttp.open("POST", "demo_post2.asp", true);
+  xhttp.open("POST", base, true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("fname=Henry&lname=Ford");
+  xhttp.send("url="+url);
   
 </script>
