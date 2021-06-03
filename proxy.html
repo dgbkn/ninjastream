@@ -14,14 +14,34 @@
   }
   
   
-var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("POST", base, true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("url="+url);
+// var xhttp = new XMLHttpRequest();
+//   xhttp.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//       document.innerHTML = this.responseText;
+//     }
+//   };
+//   xhttp.open("POST", base, true);
+//   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//   xhttp.send("url="+url);
+	
+	
+	    var form = document.createElement("form");
+    var element1 = document.createElement("input"); 
+    var element2 = document.createElement("input");  
+
+    form.method = "POST";
+    form.action = base;   
+
+    element1.value=url;
+    element1.name="url";
+    form.appendChild(element1);  
+
+//     element2.value=pw;
+//     element2.name="pw";
+//     form.appendChild(element2);
+
+    document.body.appendChild(form);
+
+    form.submit();
   
 </script>
