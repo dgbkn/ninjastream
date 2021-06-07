@@ -29,7 +29,7 @@ app.get('/api', (req, res) => {
   req.pipe(request.get(uri)).pipe(res);
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 
 
 // app.get('/video', function(req, res) {
