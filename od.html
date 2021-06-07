@@ -10,6 +10,7 @@
 
 <body>
     <input type="text" value="" id="og" onchange="doo()" onforminput="doo()" oninput="doo()" /><br>
+    <input type="text" value="" id="gooo" /><br>
 
     <input type="text" value="" id="goo" /><br>
     <button onclick="dooo()" style="height: 40px;width:80px"  >Copy</button>
@@ -17,8 +18,8 @@
 <script>
     function doo() {
         var link = document.getElementById("og").value;
-        var net = link.replace("www.dropbox.com", "dl.dropboxusercontent.com");
-        net = net.replace("?dl=0", "");
+        var net = document.getElementById("gooo").value + link;
+      
 
         document.getElementById("goo").value = net;
        /* Get the text field */
