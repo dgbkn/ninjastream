@@ -18,7 +18,7 @@
         <label>Enter File ID</label>
     <input type="text" value="" id="fid"  onchange="genlink()" onforminput="genlink()" oninput="genlink()" /><br>
             <button onclick="genlink()" style="height: 40px;width:80px"  >Generate Link </button>
-            <button onclick="()=>{document.getElementById("fid").value = ''}" style="height: 40px;width:80px"  >Clear! </button>
+            <button onclick="()=>{document.getElementById('fid').value = ''}" style="height: 40px;width:80px"  >Clear! </button>
 
     
     <br><br><br>
@@ -89,7 +89,7 @@
         }
      }
    };
-   xhttp.open("GET", domain+"seedr/encrypt?user"=+user+"&pass="+pass, true);
+   xhttp.open("GET", domain+"seedr/encrypt?user="+user+"&pass="+pass, true);
    xhttp.send();
     }
     
@@ -106,7 +106,7 @@
        console.log(this.responseText);
      }
    };
-   xhttp.open("GET", domain+"seedr/get?hash"=+hash, true);
+   xhttp.open("GET", domain+"seedr/get?hash="+hash, true);
    xhttp.send();
     
     
@@ -124,7 +124,7 @@
        console.log(this.responseText);
      }
    };
-   xhttp.open("GET", domain+"seedr/magnet?hash"=+hash+"&link="+link, true);
+   xhttp.open("GET", domain+"seedr/magnet?hash="+hash+"&link="+link, true);
    xhttp.send();
     
     
