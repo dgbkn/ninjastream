@@ -31,12 +31,12 @@
               <label>Hash</label>
     <input type="text" value="" id="hash" /><br>
         <button onclick="genhash()" style="height: 40px;width:80px"  >Generate Hash </button>
-
+<br><br><br>
     
     
     <label for="files">Files:</label>
 
-<textarea id="files" name="files">
+<textarea id="files" name="files" style="height: 40px;width:200px">
 ................
 </textarea>
     
@@ -104,6 +104,7 @@
    xhttp.onreadystatechange = function() {
      if (this.readyState == 4 && this.status == 200) {
        console.log(this.responseText);
+         document.getElementById("files").value = this.responseText;
      }
    };
    xhttp.open("GET", domain+"seedr/get?hash="+hash, true);
