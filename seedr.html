@@ -5,14 +5,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dROPbOX Generator</title>
+    <title>sEEDR Generator</title>
 </head>
 
 <body>
-    <input type="text" value="" id="og" onchange="doo()" onforminput="doo()" oninput="doo()" /><br>
+    <label>Enter User</label>
+    <input type="text" value="" id="user"  /><br>
 
-    <input type="text" value="" id="goo" /><br>
+      <label>Enter Pass</label>
+    <input type="text" value="" id="pass"  /><br>
+    
+        <label>Enter File ID</label>
+    <input type="text" value="" id="fid"  onchange="doo()" onforminput="doo()" oninput="doo()" /><br>
+    
+    <br><br><br>
+    
+          <label>Link</label>
+    <input type="text" value="" id="link"  /><br>
+    
+    
+    
+              <label>Hash</label>
+    <input type="text" value="" id="hash" /><br>
+        <button onclick="genhash()" style="height: 40px;width:80px"  >Generate Hash </button>
+
+    
+    
+    <label for="files">Files:</label>
+
+<textarea id="files" name="files">
+................
+</textarea>
+    
+              <label>Add Magnet</label>
+    <input type="text" value="" id="magnet"  /><br>
+    
+    
     <button onclick="dooo()" style="height: 40px;width:80px"  >Copy</button>
+    
+    
+        <button onclick="getFiles()" style="height: 40px;width:80px"  >Get Files </button>
+
 </body>
 <script>
     function doo() {
