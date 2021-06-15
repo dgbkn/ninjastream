@@ -16,7 +16,7 @@
     <input type="text" value="" id="pass"  /><br>
     
         <label>Enter File ID</label>
-    <input type="text" value="" id="fid"  onchange="doo()" onforminput="doo()" oninput="doo()" /><br>
+    <input type="text" value="" id="fid"  onchange="genlink()" onforminput="genlink()" oninput="genlink()" /><br>
             <button onclick="genlink()" style="height: 40px;width:80px"  >Generate Link </button>
             <button onclick="()=>{document.getElementById("fid").value = ''}" style="height: 40px;width:80px"  >Clear! </button>
 
@@ -52,7 +52,7 @@
 <script>
     let domain = 'https://thawing-scrubland-27252.herokuapp.com/';
 
-    function doo() {
+    function genlink() {
         var hash = document.getElementById("hash").value;
         var id = document.getElementById("fid").value;
         var net = domain+"seedr/download?id="+id+"&hash="+hash;
@@ -69,9 +69,33 @@
       document.execCommand("copy");
         }
 
+    function genhash(){
+                var user = document.getElementById("user").value;
+                var pass = document.getElementById("pass").value;
+              //..document.getElementById("hash").value;
+
+
+
+        var n = true;
+        while(n==true){
+      var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+            if(this.responseText.includes("/")){
+                         n=true;
+           }else{
+       document.getElementById("hash").value = this.responseText;
+         n=false;
+        }
+     }
+   };
+   xhttp.open("GET", domain+"seedr/encrypt?user"=+user+"&pass="+pass, true);
+   xhttp.send();
+    }
+    
+    }
 
     
-    document.getElementById("og").focus();
 </script>
 
 </html>
