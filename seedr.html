@@ -94,6 +94,41 @@
     }
     
     }
+    
+    
+       function getFiles(){
+       var hash = document.getElementById("hash").value;
+
+              //..document.getElementById("hash").value;
+      var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+       console.log(this.responseText);
+     }
+   };
+   xhttp.open("GET", domain+"seedr/get?hash"=+hash, true);
+   xhttp.send();
+    
+    
+    }
+    
+    
+           function add(){
+       var hash = document.getElementById("hash").value;
+       var link = document.getElementById("magnet").value;
+
+              //..document.getElementById("hash").value;
+      var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+       console.log(this.responseText);
+     }
+   };
+   xhttp.open("GET", domain+"seedr/magnet?hash"=+hash+"&link="+link, true);
+   xhttp.send();
+    
+    
+    }
 
     
 </script>
