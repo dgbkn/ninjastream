@@ -43,44 +43,33 @@
               <label>Add Magnet</label>
     <input type="text" value="" id="magnet"  /><br>
     
-    
-    <button onclick="dooo()" style="height: 40px;width:80px"  >Copy</button>
-    
-    
-        <button onclick="getFiles()" style="height: 40px;width:80px"  >Get Files </button>
+        
+            <button onclick="add()" style="height: 40px;width:80px" >Add magnet </button>
+
+        <button onclick="getFiles()" style="height: 40px;width:80px" >Get Files </button>
 
 </body>
 <script>
+    let domain = 'https://thawing-scrubland-27252.herokuapp.com/';
+
     function doo() {
-        var link = document.getElementById("og").value;
-         var net = link;
+        var hash = document.getElementById("hash").value;
+        var id = document.getElementById("fid").value;
+        var net = domain+"seedr/download?id="+id+"&hash="+hash;
 //         net = net.replace("?dl=0", "");
 
-        document.getElementById("goo").value = net+"&download=1";
+        document.getElementById("link").value = net;
        /* Get the text field */
-       var copyText = document.getElementById("goo");
-/* Select the text field */
-copyText.select();
-copyText.setSelectionRange(0, 99999); /* For mobile devices */
+       var copyText = document.getElementById("link");
+      /* Select the text field */
+       copyText.select();
+       copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
-/* Copy the text inside the text field */
-document.execCommand("copy");
-        
+      /* Copy the text inside the text field */
+      document.execCommand("copy");
+        }
 
-    }
 
-    function dooo(){
-        
-        /* Get the text field */
-        var copyText = document.getElementById("goo");
-
-        /* Select the text field */
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-        /* Copy the text inside the text field */
-        document.execCommand("copy");
-    }
     
     document.getElementById("og").focus();
 </script>
