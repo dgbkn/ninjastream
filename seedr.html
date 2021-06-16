@@ -39,15 +39,29 @@
 <textarea id="files" name="files" style="height: 80px;width:900px">
 ................
 </textarea>
+    <br>
     
               <label>Add Magnet</label>
     <input type="text" value="" id="magnet"  /><br>
     
         
             <button onclick="add()" style="height: 40px;width:80px" >Add magnet </button>
-
+<br>
         <button onclick="getFiles()" style="height: 40px;width:80px" >Get Files </button>
+        <button onclick="getall()" style="height: 40px;width:80px" >Get All </button>
+        <button onclick="getfolders()" style="height: 40px;width:80px" >Get Folders </button>
 
+    
+    <br>
+    
+    <br>
+    <br>
+        <label for="log">log:</label>
+
+    <textarea id="log" name="log" style="height: 80px;width:900px">
+................
+</textarea>
+    
 </body>
 <script>
     let domain = 'https://thawing-scrubland-27252.herokuapp.com/';
@@ -97,6 +111,41 @@
     
     
        function getFiles(){
+       var hash = document.getElementById("hash").value;
+
+              //..document.getElementById("hash").value;
+      var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+       console.log(this.responseText);
+         document.getElementById("files").value = this.responseText;
+     }
+   };
+   xhttp.open("GET", domain+"seedr/get?hash="+hash, true);
+   xhttp.send();
+    
+    
+    }
+    
+    
+          function getall(){
+       var hash = document.getElementById("hash").value;
+
+              //..document.getElementById("hash").value;
+      var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+       console.log(this.responseText);
+         document.getElementById("files").value = this.responseText;
+     }
+   };
+   xhttp.open("GET", domain+"seedr/get?hash="+hash, true);
+   xhttp.send();
+    
+    
+    }
+    
+          function getfolders(){
        var hash = document.getElementById("hash").value;
 
               //..document.getElementById("hash").value;
