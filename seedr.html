@@ -74,7 +74,7 @@
     <br>
         <label for="log">log:</label>
 
-    <textarea id="log" name="log" style="height: 80px;width:900px">
+    <textarea id="log" name="log" style="height: 200px;width:900px">
 ................
 </textarea>
 </body>
@@ -187,7 +187,7 @@
    xhttp.onreadystatechange = function() {
      if (this.readyState == 4 && this.status == 200) {
        console.log(this.responseText);
-document.getElementById("log").value = document.getElementById("log").value + this.responseText;
+document.getElementById("log").value = this.responseText;
      }
    };
    xhttp.open("GET", domain+"seedr/magnet?hash="+hash+"&link="+link, true);
@@ -206,7 +206,7 @@ document.getElementById("log").value = document.getElementById("log").value + th
    xhttp.onreadystatechange = function() {
      if (this.readyState == 4 && this.status == 200) {
        console.log(this.responseText);
-document.getElementById("log").value = document.getElementById("log").value + this.responseText;
+document.getElementById("log").value =  this.responseText;
      }
    };
    xhttp.open("GET", domain+"seedr/deletefile?hash="+hash+"&id="+link, true);
@@ -225,7 +225,8 @@ document.getElementById("log").value = document.getElementById("log").value + th
       var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function() {
      if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("log").value = document.getElementById("log").value + this.responseText;
+    
+         
        console.log(this.responseText);
      }
    };
@@ -245,7 +246,7 @@ function search(){
       var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function() {
      if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("log").value = document.getElementById("log").value + this.responseText;
+    document.getElementById("log").value = this.responseText;
        console.log(this.responseText);
      }
    };
@@ -263,7 +264,7 @@ function getband(){
       var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function() {
      if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("log").value = document.getElementById("log").value + this.responseText;
+    document.getElementById("log").value =  this.responseText;
        console.log(this.responseText);
      }
    };
@@ -280,7 +281,7 @@ function getsettings(){
       var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function() {
      if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("log").value = document.getElementById("log").value + this.responseText;
+    document.getElementById("log").value = this.responseText;
        console.log(this.responseText);
      }
    };
