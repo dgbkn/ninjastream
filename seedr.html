@@ -42,7 +42,7 @@
     <br>
     
               <label>Add Magnet</label>
-    <input type="text" value="" id="magnet"  /><br>
+    <input type="text" value="" id="magnet"  />
     
         
             <button onclick="add()" style="height: 40px;width:80px" >Add magnet </button>
@@ -61,6 +61,14 @@
     <textarea id="log" name="log" style="height: 80px;width:900px">
 ................
 </textarea>
+    
+        <br>
+    
+              <label>Delete Id:- </label>
+    <input type="text" value="" id="todelete"  />
+                <button onclick="deletefile()" style="height: 40px;width:80px" >delete file </button>
+                <button onclick="deletefolder()" style="height: 40px;width:80px" >delete folder </button>
+
     
 </body>
 <script>
@@ -179,6 +187,26 @@
     
     
     }
+    
+        
+           function deletefile(){
+       var hash = document.getElementById("hash").value;
+       var link = document.getElementById("todelete").value;
+
+              //..document.getElementById("hash").value;
+      var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+       console.log(this.responseText);
+     }
+   };
+   xhttp.open("GET", domain+"seedr/deletefile?hash="+hash+"&id="+link, true);
+   xhttp.send();
+    
+    
+    }
+    
+//     deletefile()
 
     
 </script>
