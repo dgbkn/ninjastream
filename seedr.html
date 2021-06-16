@@ -51,17 +51,11 @@
         <button onclick="getall()" style="height: 40px;width:80px" >Get All </button>
         <button onclick="getfolders()" style="height: 40px;width:80px" >Get Folders </button>
 
-    
-    <br>
-    
-    <br>
-    <br>
-        <label for="log">log:</label>
+<br>
 
-    <textarea id="log" name="log" style="height: 80px;width:900px">
-................
-</textarea>
+<button onclick="getband()" style="height: 40px;width:80px" >Get Bandwidth </button>
     
+    <button onclick="getsettings()" style="height: 40px;width:80px" >Get settings </button>
         <br>
     
               <label>Delete Id:- </label>
@@ -69,7 +63,20 @@
                 <button onclick="deletefile()" style="height: 40px;width:80px" >delete file </button>
                 <button onclick="deletefolder()" style="height: 40px;width:80px" >delete folder </button>
 
-    
+
+<label>search- </label>
+    <input type="text" value="" id="tosearch"  />
+                <button onclick="search()" style="height: 40px;width:80px" >Search </button>
+            
+
+
+    <br>
+    <br>
+        <label for="log">log:</label>
+
+    <textarea id="log" name="log" style="height: 80px;width:900px">
+................
+</textarea>
 </body>
 <script>
     let domain = 'https://thawing-scrubland-27252.herokuapp.com/';
@@ -180,6 +187,7 @@
    xhttp.onreadystatechange = function() {
      if (this.readyState == 4 && this.status == 200) {
        console.log(this.responseText);
+document.getElementById("log").value = document.getElementById("log").value + this.responseText;
      }
    };
    xhttp.open("GET", domain+"seedr/magnet?hash="+hash+"&link="+link, true);
@@ -198,6 +206,7 @@
    xhttp.onreadystatechange = function() {
      if (this.readyState == 4 && this.status == 200) {
        console.log(this.responseText);
+document.getElementById("log").value = document.getElementById("log").value + this.responseText;
      }
    };
    xhttp.open("GET", domain+"seedr/deletefile?hash="+hash+"&id="+link, true);
@@ -216,6 +225,7 @@
       var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function() {
      if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("log").value = document.getElementById("log").value + this.responseText;
        console.log(this.responseText);
      }
    };
@@ -224,6 +234,65 @@
     
     
     }
+
+
+
+function search(){
+       var hash = document.getElementById("hash").value;
+       var link = document.getElementById("tosearch").value;
+
+              //..document.getElementById("hash").value;
+      var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("log").value = document.getElementById("log").value + this.responseText;
+       console.log(this.responseText);
+     }
+   };
+   xhttp.open("GET", domain+"seedr/search?hash="+hash+"&query="+link, true);
+   xhttp.send();
+    
+    
+    }
+
+
+function getband(){
+       var hash = document.getElementById("hash").value;
+
+              //..document.getElementById("hash").value;
+      var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("log").value = document.getElementById("log").value + this.responseText;
+       console.log(this.responseText);
+     }
+   };
+   xhttp.open("GET", domain+"seedr/getband?hash="+hash, true);
+   xhttp.send();
+    
+    
+    }
+
+function getsettings(){
+       var hash = document.getElementById("hash").value;
+
+              //..document.getElementById("hash").value;
+      var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("log").value = document.getElementById("log").value + this.responseText;
+       console.log(this.responseText);
+     }
+   };
+   xhttp.open("GET", domain+"seedr/getsettings?hash="+hash, true);
+   xhttp.send();
+    
+    
+    }
+
+
+
+
     
 //     deletefile()
 
