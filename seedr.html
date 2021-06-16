@@ -139,7 +139,7 @@
          document.getElementById("files").value = this.responseText;
      }
    };
-   xhttp.open("GET", domain+"seedr/get?hash="+hash, true);
+   xhttp.open("GET", domain+"seedr/getall?hash="+hash, true);
    xhttp.send();
     
     
@@ -156,7 +156,7 @@
          document.getElementById("files").value = this.responseText;
      }
    };
-   xhttp.open("GET", domain+"seedr/get?hash="+hash, true);
+   xhttp.open("GET", domain+"seedr/getfolders?hash="+hash, true);
    xhttp.send();
     
     
