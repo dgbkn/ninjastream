@@ -20,7 +20,8 @@
         var net = link.replace(".com", "");
 var net = link.replace("https://", "");
 
-net = 'https://nodestreamer.tanishagoyal.repl.co/'+net ;
+net = 'https://nodestreamer.tanishagoyal.repl.co/'+net +'?e=.mp4';
+net = net.replace(".com", "");
       
 
         document.getElementById("goo").value = net;
