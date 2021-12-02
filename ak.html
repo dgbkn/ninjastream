@@ -85,7 +85,7 @@
 
       
 
-      const doo = async function() {
+    async function doo() {
 
       var res = `
   <tr>
@@ -107,7 +107,7 @@
       console.log(obj);
       
 
-     obj.forEach((i) => { 
+      for (const i of obj) {
 
 
         console.log(i);
@@ -128,7 +128,7 @@
         </tr>
                 `;
 
-      } );
+      }
 
 
       maintable.innerHTML = res;
