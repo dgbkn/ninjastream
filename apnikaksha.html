@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pw tool</title>
+
+  <link rel="stylesheet" href="https://clipboardjs.com/bower_components/primer-css/css/primer.css">
+<link rel="stylesheet" href="https://clipboardjs.com/bower_components/highlightjs/styles/github.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900">
+<link rel="stylesheet" href="https://clipboardjs.com/assets/styles/main.css">
+
+<style>
+    html{
+        margin: 50px;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        margin: 5px;
+        padding: 8px;
+      }
+</style>
+
+</head>
+
+<body>
+
+  enter the pdf or video json response
+  <input type="text" id="pdf" onchange="doo()" oninput="doo()">
+
+  <br>
+  <button type="button" onclick="doo()">Calculate</button>
+  <button type="button" onclick="cls()">Clear</button>
+  <br>
+  <table id="maintable">
+    <tr>
+      <th>name</th>
+      <th>url</th>
+      <th>action</th>
+    </tr>
+
+</table>
+
+  <script>
+
+
+    function fallbackCopyTextToClipboard(text) {
+        var textArea = document.createElement("textarea");
+        textArea.value = text;
+        
+        // Avoid scrolling to bottom
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.position = "fixed";
+      
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+      
+        try {
+          var successful = document.execCommand('copy');
+          var msg = successful ? 'successful' : 'unsuccessful';
+          console.log('Fallback: Copying text command was ' + msg);
+        } catch (err) {
+          console.error('Fallback: Oops, unable to copy', err);
+        }
+      
+        document.body.removeChild(textArea);
+      }
+
+      function copyTextToClipboard(text) {
+        if (!navigator.clipboard) {
+          fallbackCopyTextToClipboard(text);
+          return;
+        }
+        navigator.clipboard.writeText(text).then(function() {
+          console.log('Async: Copying to clipboard was successful!');
+        }, function(err) {
+          console.error('Async: Could not copy text: ', err);
+        });
+      }
+
+      
+
+    function doo() {
+
+      var res = `
+  <tr>
+    <th>name</th>
+    <th>url</th>
+    <th>action</th>
+  </tr>
+            `;
+
+      var maintable = document.getElementById("maintable");
+
+      maintable.innerHTML = res;
+
+     var arr = document.getElementById("pdf");
+      
+      var obj = JSON.parse(arr.value);
+
+      obj = obj["data"];
+      console.log(obj);
+      
+
+     obj.forEach((i) => { 
+
+        console.log(i);
+        if(!i.homeworkIds){
+          var iuri = i.url.replace(".mpd", ".m3u8");;
+          var t= i["topic"];
+        }else{
+          var t= i["homeworkIds"][0]["topic"];
+          var chunk = i["homeworkIds"][0]["attachmentIds"][0];
+
+          var iuri = chunk["baseUrl"] + chunk["key"];
+        }
+
+        res = res + `
+           <tr onclick="copyTextToClipboard('${iuri}')">
+    <td>${t}</td>
+    <td>${iuri}</td>
+    <td><button onclick="copyTextToClipboard('${iuri}')">copy it </button></td>
+        </tr>
+                `;
+
+      } );
+
+
+      maintable.innerHTML = res;
+
+      document.activeElement.blur();
+
+      
+    }
+
+    function cls(){
+        document.getElementById("pdf").value = "";
+        document.getElementById("videores").value = "";
+    }
+
+    document.getElementById("videores").focus();
+  </script>
+
+
+
+
+
+</body>
+
+</html>
