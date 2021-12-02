@@ -109,22 +109,22 @@
 
      obj.forEach((i) => { 
 
-        console.log(i);
-        if(!i.homeworkIds){
-          var iuri = i.url.replace(".mpd", ".m3u8");;
-          var t= i["topic"];
-        }else{
-          var t= i["homeworkIds"][0]["topic"];
-          var chunk = i["homeworkIds"][0]["attachmentIds"][0];
 
-          var iuri = chunk["baseUrl"] + chunk["key"];
+        console.log(i);
+        if(i.material_type == "VIDEO"){
+       var url = "https://apnikaksha.shreeram4.repl.co/decryptVideo?data=" +  encodeURIComponent(i.media_id);
+       var result = await makeRequest("GET", url);
+        }else{
+          // var t= i["homeworkIds"][0]["topic"];
+          // var chunk = i["homeworkIds"][0]["attachmentIds"][0];
+          // var iuri = chunk["baseUrl"] + chunk["key"];
         }
 
         res = res + `
-           <tr onclick="copyTextToClipboard('${iuri}')">
-    <td>${t}</td>
-    <td>${iuri}</td>
-    <td><button onclick="copyTextToClipboard('${iuri}')">copy it </button></td>
+           <tr onclick="copyTextToClipboard('${result}')">
+    <td>${i.Title}</td>
+    <td>${result}</td>
+    <td><button onclick="copyTextToClipboard('${result}')">copy it </button></td>
         </tr>
                 `;
 
@@ -144,6 +144,36 @@
     }
 
     document.getElementById("videores").focus();
+
+
+
+
+    function makeRequest(method, url) {
+    return new Promise(function (resolve, reject) {
+        let xhr = new XMLHttpRequest();
+        xhr.open(method, url);
+        xhr.onload = function () {
+            if (this.status >= 200 && this.status < 300) {
+                resolve(xhr.response);
+            } else {
+                reject({
+                    status: this.status,
+                    statusText: xhr.statusText
+                });
+            }
+        };
+        xhr.onerror = function () {
+            reject({
+                status: this.status,
+                statusText: xhr.statusText
+            });
+        };
+        xhr.send();
+    });
+}
+
+
+
   </script>
 
 
