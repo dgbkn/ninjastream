@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://vjs.zencdn.net/7.18.1/video-js.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/videojs-seek-buttons/dist/videojs-seek-buttons.css" rel="stylesheet">
+
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <!-- <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script> -->
+
+    <style>
+        .video-js .vjs-big-play-button {
+            top: 40%;
+            left: 40%;
+        }
+
+        .vjs-loading-spinner {
+            border: none;
+            opacity: 0;
+            visibility: hidden;
+            animation: vjs-spinner-fade-out 2s linear 1;
+            animation-delay: 2s;
+        }
+
+        .vjs-loading-spinner:before,
+        .vjs-loading-spinner:after {
+            border: none;
+        }
+
+        .vjs-loading-spinner:after {
+            background-image: url(https://assets.nflxext.com/en_us/pages/wiplayer/site-spinner.png);
+            background-repeat: no-repeat;
+            background-position-x: 50%;
+            background-position-y: 50%;
+            -moz-background-size: 100%;
+            -o-background-size: 100%;
+            background-size: 100%;
+        }
+
+        .vjs-seeking .vjs-loading-spinner:after,
+        .vjs-waiting .vjs-loading-spinner:after {
+            animation: vjs-spinner-spin 1.1s linear infinite, vjs-spinner-fade 1.1s linear 1 !important;
+            animation-delay: 2s;
+        }
+
+        .vjs-seeking .vjs-loading-spinner,
+        .vjs-waiting .vjs-loading-spinner {
+            opacity: 1;
+            visibility: visible;
+            animation: vjs-spinner-fade-in 2s linear 1;
+            animation-delay: 2s;
+        }
+
+        @keyframes vjs-spinner-fade-in {
+            0% {
+                opacity: 0;
+                visibility: visible;
+            }
+
+            100% {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        @keyframes vjs-spinner-fade-out {
+            0% {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            100% {
+                opacity: 0;
+                visibility: visible;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <video id="my-video" class="video-js vim-css" controls preload="auto" width="640" height="264"
+        poster="MY_VIDEO_POSTER.jpg" data-setup='{ "playbackRates": [0.5, 1,1.25, 1.5, 1.75,2,2.5,3] }'>
+        <source src="https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"
+            type="application/x-mpegurl" />
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a
+            web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+    </video>
+
+    <script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
+    <script src="https://unpkg.com/@videojs/http-streaming@2.14.2/dist/videojs-http-streaming.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-seek-buttons/dist/videojs-seek-buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-quality-levels/2.1.0/videojs-contrib-quality-levels.min.js"></script>
+    <script src="https://www.unpkg.com/videojs-hls-quality-selector@1.0.5/dist/videojs-hls-quality-selector.min.js"></script>
+
+    <script>
+        // Create a player.
+        var player = videojs('my-video');
+
+
+
+        player.seekButtons({
+            forward: 30,
+            back: 10
+        });
+
+
+        player.hlsQualitySelector();
+
+        // Create a track object.
+        var track = new videojs.AudioTrack({
+            id: 'my-spanish-audio-track',
+            kind: 'translation',
+            label: 'Spanish',
+            language: 'es'
+        });
+
+        // Add the track to the player's audio track list.
+        player.audioTracks().addTrack(track);
+
+// // Get the current player's AudioTrackList object.
+// var audioTrackList = player.audioTracks();
+
+// // Listen to the "change" event.
+// audioTrackList.addEventListener('change', function() {
+
+//   // Log the currently enabled AudioTrack label.
+//   for (var i = 0; i < audioTrackList.length; i++) {
+//     var track = audioTrackList[i];
+
+//     if (track.enabled) {
+//       videojs.log(track.label);
+//       return;
+//     }
+//   }
+// });
+
+
+// // Get the track we created in an earlier example.
+// var track = player.audioTracks().getTrackById('my-spanish-audio-track');
+
+// // Remove it from the audio track list.
+// player.audioTracks().removeTrack(track);
+
+
+// https://ytdl.shreeram4.repl.co/getVidData?url=RhRwPOpqzOE
+
+    </script>
+</body>
+
+</html>
