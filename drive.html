@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dROPbOX Generator</title>
+</head>
+
+<body>
+    <input type="text" value="" id="og" onchange="doo()" onforminput="doo()" oninput="doo()" /><br>
+
+    <input type="text" value="" id="goo" /><br>
+    <button onclick="dooo()" style="height: 40px;width:80px"  >Copy</button>
+</body>
+<script>
+    function doo() {
+        var link = document.getElementById("og").value;
+        var net = link.replace("https://drive.google.com/uc?id=", "");
+        net = net.replace("https://drive.google.com/file/d/", "");
+        net = net.replace("/view", "");
+      net = `https://www.googleapis.com/drive/v3/files/${net}?alt=media&key=AIzaSyD0SxLSv34ivId5qpj-sIbbJY9xSmp16Ac`;
+      
+     // https://www.googleapis.com/drive/v3/files/1o_ZBCt89Q-YAMXacKZWuQgi6d6qMCw-e?alt=media&key=AIzaSyD0SxLSv34ivId5qpj-sIbbJY9xSmp16Ac
+
+        document.getElementById("goo").value = net;
+       /* Get the text field */
+       var copyText = document.getElementById("goo");
+/* Select the text field */
+copyText.select();
+copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+/* Copy the text inside the text field */
+document.execCommand("copy");
+        
+
+    }
+
+    function dooo(){
+        
+        /* Get the text field */
+        var copyText = document.getElementById("goo");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+    }
+    
+    document.getElementById("og").focus();
+</script>
+
+</html>
