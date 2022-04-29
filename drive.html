@@ -20,7 +20,10 @@
         var net = link.replace("https://drive.google.com/uc?id=", "");
         net = net.replace("https://drive.google.com/file/d/", "");
         net = net.replace("/view", "");
-      net = `https://www.googleapis.com/drive/v3/files/${net}?alt=media&key=AIzaSyD0SxLSv34ivId5qpj-sIbbJY9xSmp16Ac`;
+      //net = `https://www.googleapis.com/drive/v3/files/${net}?alt=media&key=AIzaSyD0SxLSv34ivId5qpj-sIbbJY9xSmp16Ac`;
+        net = "https://phpstreamer.herokuapp.com/all.php?gdrive=" + net;
+        
+//         https://phpstreamer.herokuapp.com/all.php?hungama=1&gdrive=
       
      // https://www.googleapis.com/drive/v3/files/1o_ZBCt89Q-YAMXacKZWuQgi6d6qMCw-e?alt=media&key=AIzaSyD0SxLSv34ivId5qpj-sIbbJY9xSmp16Ac
 
