@@ -1,56 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta charset="utf-8">
-<link rel="icon" href="https://ninjastream.to/favicon.ico" type="image/x-icon"/>
-<link rel="shortcut icon" href="https://ninjastream.to/favicon.ico" type="image/x-icon"/>
-	
-<script>
-function loading(){
-	var url = new URL(window.location);
-	var id = url.searchParams.get("id");
-	var player = document.getElementById("videoplayer");
-	var downloads = document.getElementById("videodownload");
-	
-	document.title = id+" - dg"
-	//downloads.action = "https://ninjastream.to/download/"+id
-	player.src = id
-};
-
-</script>
-<style>
-.download {
-	background-color: #4CAF50;
-  	border: none;
-    color: white;
-    padding: 15px 284px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-}
-.new {
-    background-color: #ff4d00;
-    border: none;
-    color: white;
-    padding: 15px 280px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-}
-body {
-    background-color: #181a1b;
-    color: white;
-}
-</style>
-<center>
-<iframe id="videoplayer" src="https://femax20.com/v/CHANGER" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen width="100%" height="100%" sandbox="allow-scripts allow-same-origin" ></iframe>
-<title>Ninjastream.io Player</title>
-<br>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dROPbOX Generator</title>
 </head>
-<body onload="loading()">
 
-	
+<body>
+    <input type="text" value="" id="og" onchange="doo()" onforminput="doo()" oninput="doo()" /><br>
+
+    <input type="text" value="" id="goo" /><br>
+    <button onclick="dooo()" style="height: 40px;width:80px"  >Copy</button>
 </body>
-</center>
+<script>
+    function doo() {
+        var link = document.getElementById("og").value;
+        var net = link.split("/");
+	    var id = link[link.length - 1];
+
+      //net = `https://www.googleapis.com/drive/v3/files/${net}?alt=media&key=AIzaSyD0SxLSv34ivId5qpj-sIbbJY9xSmp16Ac`;
+        net = "https://thawing-scrubland-27252.herokuapp.com/fembed?id=" + id;
+        
+
+        document.getElementById("goo").value = net;
+       /* Get the text field */
+       var copyText = document.getElementById("goo");
+/* Select the text field */
+copyText.select();
+copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+/* Copy the text inside the text field */
+document.execCommand("copy");
+        
+
+    }
+
+    function dooo(){
+        
+        /* Get the text field */
+        var copyText = document.getElementById("goo");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+    }
+    
+    document.getElementById("og").focus();
+</script>
+
+</html>
